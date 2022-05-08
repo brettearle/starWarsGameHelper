@@ -8,7 +8,7 @@ class DataNPC {
     vowelStr ='aeiou'
     //This is the base method for retrieving a random value from an array
     randomArrValue(arr){
-        let randomIndex = Math.floor(Math.random() * (arr.length -1))
+        let randomIndex = Math.floor(Math.random() * (arr.length))
         return arr[randomIndex]
     }
     //Random age generator
