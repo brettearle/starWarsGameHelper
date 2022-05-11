@@ -159,7 +159,7 @@ class NPC extends DataNPC {
         this._gender = super.randomArrValue(this.genderArr)
         this._concept = super.randomArrValue(this.conceptArr)
         this._trouble = super.randomArrValue(this.troubleArr)
-        this._skills = super.skillList(20)
+        this._skills = super.skillList(28)
     }
 
     get name() {
