@@ -1,11 +1,111 @@
-class DataNPC {
+//this is global data storage for fetch
+
+
+//this is the fetch class from wikipedia
+class FetchData {
+    getSpecies(){
+        function getSpeciesAtoE(){
+            const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_%28A%E2%80%93E%29&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
+            return fetch(url)
+                .then(res => res.json()) // parse response as JSON
+                .then(data => {
+                let store = data.parse.sections
+                let arr =[]
+                store.forEach(el => arr.push(el.line))
+                arr = arr[Math.floor(Math.random() * (arr.length -3))] 
+                speciesNPC.innerHTML = `Species: ${arr}`
+                })
+                .catch(err => {
+                    console.log(`error ${err}`)
+                });
+        }
+        function getSpeciesFtoJ(){
+            const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_(F–J)&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
+            return fetch(url)
+                .then(res => res.json()) // parse response as JSON
+                .then(data => {
+                let store = data.parse.sections
+                let arr =[]
+                store.forEach(el => arr.push(el.line))
+                arr = arr[Math.floor(Math.random() * (arr.length -4))] 
+                speciesNPC.innerHTML = `Species: ${arr}`
+                })
+                .catch(err => {
+                    console.log(`error ${err}`)
+                });
+        }
+        function getSpeciesKtoO(){
+            const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_(K–O)&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
+            return fetch(url)
+                .then(res => res.json()) // parse response as JSON
+                .then(data => {
+                let store = data.parse.sections
+                let arr =[]
+                store.forEach(el => arr.push(el.line))
+                arr = arr[Math.floor(Math.random() * (arr.length -5))] 
+                speciesNPC.innerHTML = `Species: ${arr}`
+                })
+                .catch(err => {
+                    console.log(`error ${err}`)
+                });
+        }
+        function getSpeciesPtoT(){
+            const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_(P–T)&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
+            return fetch(url)
+                .then(res => res.json()) // parse response as JSON
+                .then(data => {
+                let store = data.parse.sections
+                let arr =[]
+                store.forEach(el => arr.push(el.line))
+                arr = arr[Math.floor(Math.random() * (arr.length -5))] 
+                speciesNPC.innerHTML = `Species: ${arr}`
+                })
+                .catch(err => {
+                    console.log(`error ${err}`)
+                });
+        }
+        function getSpeciesUtoZ(){
+            const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_(U–Z)&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
+            return fetch(url)
+                .then(res => res.json()) // parse response as JSON
+                .then(data => {
+                let store = data.parse.sections
+                let arr =[]
+                store.forEach(el => arr.push(el.line))
+                arr = arr[Math.floor(Math.random() * (arr.length -3))] 
+                speciesNPC.innerHTML = `Species: ${arr}`
+                })
+                .catch(err => {
+                    console.log(`error ${err}`)
+                });
+        }
+        //this executes a call to 1 of 5 pages of species list on wikipedia
+        const getSpeciesArrayOfFunctions = [getSpeciesAtoE,getSpeciesFtoJ,getSpeciesKtoO,getSpeciesPtoT,getSpeciesUtoZ]
+        function randomNumberForSpeciesFetch(n){
+            return Math.floor(Math.random() * n)
+        }
+        getSpeciesArrayOfFunctions[randomNumberForSpeciesFetch(getSpeciesArrayOfFunctions.length)]()
+        // getSpeciesAtoE()
+        // getSpeciesFtoJ()
+        // getSpeciesKtoO()
+        // getSpeciesPtoT()
+        // getSpeciesUtoZ()
+    }
+}
+
+//This is where data is stored to populate NPC card. uses the fetch data class for species
+class DataNPC extends FetchData{
+    constructor(){
+        super()
+        this.speciesArr = super.getSpecies()
+    }
     genderArr = ['male', 'female', 'non-binary']
     skillsArr = ['Athletics','Blast','Deception','Empathy','Fighting','Investigation','Lore','Mechanics','Notice','Persuasion','Resources','Transport','Vigor','Will']
-    speciesArr = ['Rodian', 'Human', 'Wookie', 'Tuskan Raider']
     troubleArr = ['Hunted', 'Broke', 'Diseased', 'Lost', 'Haunted', 'Crippled', 'Shamed', 'Outcasted', 'Under Supplied', 'Shamed' ]
     conceptArr = ['Politician', 'Mercenary', 'Soldier', 'Criminal', 'Mechanic', 'Pilot', 'Smuggler', 'Labourer', 'Trader', 'Fixer', 'Gambler', 'Force Adept']
     constanentStr = 'bcdfghjklmnpqrstvwxyz'
     vowelStr ='aeiou'
+
     //This is the base method for retrieving a random value from an array
     randomArrValue(arr){
         let randomIndex = Math.floor(Math.random() * (arr.length))
@@ -13,7 +113,7 @@ class DataNPC {
     }
     //Random age generator
     age(){
-        return Math.floor(12 + Math.random() * 100)
+        return Math.floor(16 + Math.random() * 44)
     }
     //skill list generator
     skillList(n1){
@@ -39,15 +139,14 @@ class DataNPC {
     //name generator
     name(){
         let name = ''
-        let count = Math.floor(1 + Math.random() * 3)
+        let count = Math.floor(2 + Math.random() * 3)
         for(let i = 0; i < count; i++){
             name = name + this.randomArrValue(this.constanentStr) + this.randomArrValue(this.vowelStr)
         }
         return name
     }
 }
-//this creates the data packet. DO NOT TOUCH. everything is in class dataNPC
-// const data = new dataNPC
+
 //NPC requires name, species, gender, high concept, trouble, skills
 
 class NPC extends DataNPC {
@@ -55,7 +154,7 @@ class NPC extends DataNPC {
     constructor(){
         super()
         this._name = super.name()
-        this._species = super.randomArrValue(this.speciesArr)
+        this._species = this.speciesArr
         this._age = super.age()
         this._gender = super.randomArrValue(this.genderArr)
         this._concept = super.randomArrValue(this.conceptArr)
@@ -126,7 +225,7 @@ class Generator {
     }
 
     btnNPCListener(){
-        this.btnNPC.addEventListener('click', this.populateCardNPC)    
+        this.btnNPC.addEventListener('click', this.populateCardNPC)  
     }
 
     populateCardNPC(){
@@ -138,10 +237,9 @@ class Generator {
         conceptNPC.innerHTML = `Concept: ${npc.concept}`
         troubleNPC.innerHTML = `Trouble: ${npc.trouble}`
         skillsNPC.innerHTML = `Skills: ${npc.skills}`
-        console.log(npc)
+        // console.log(npc) //use this console log to see the object that is the generated result
     }
 }
-//test generator
+//builds generator and listens to generate button
 let generation = new Generator()
 generation.btnNPCListener()
-//This is a test NPC
