@@ -99,7 +99,7 @@ class DataNPC extends FetchData{
         super()
         this.speciesArr = super.getSpecies()
     }
-    genderArr = ['male', 'female', 'non-binary']
+    genderArr = ['male', 'female', 'unknown']
     skillsArr = ['Athletics','Blast','Deception','Empathy','Fighting','Investigation','Lore','Mechanics','Notice','Persuasion','Resources','Transport','Vigor','Will']
     troubleArr = ['Hunted', 'Broke', 'Diseased', 'Lost', 'Haunted', 'Crippled', 'Shamed', 'Outcasted', 'Under Supplied', 'Shamed' ]
     conceptArr = ['Politician', 'Mercenary', 'Soldier', 'Criminal', 'Mechanic', 'Pilot', 'Smuggler', 'Labourer', 'Trader', 'Fixer', 'Gambler', 'Force Adept']
