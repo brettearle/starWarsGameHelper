@@ -1,8 +1,6 @@
-//this is global data storage for fetch
-
-
+//******************NPC*********************** */
 //this is the fetch class from wikipedia
-class FetchData {
+class FetchDataNPC {
     getSpecies(){
         function getSpeciesAtoE(){
             const url = 'https://en.wikipedia.org/w/api.php?action=parse&page=List_of_Star_Wars_species_%28A%E2%80%93E%29&prop=disabletoc&format=json&prop=displaytitle&prop=sections&origin=*'
@@ -94,7 +92,7 @@ class FetchData {
 }
 
 //This is where data is stored to populate NPC card. uses the fetch data class for species
-class DataNPC extends FetchData{
+class DataNPC extends FetchDataNPC{
     constructor(){
         super()
         this.speciesArr = super.getSpecies()
@@ -119,7 +117,7 @@ class DataNPC extends FetchData{
     skillList(n1){
         let arr = []
         let prod = [] 
-        for(let i = 0; i < n1; i++ ){
+        for(let i = 0; i <= n1; i++ ){
            arr.push(this.randomArrValue(this.skillsArr))
         } 
         arr.sort()
@@ -240,6 +238,129 @@ class Generator {
         // console.log(npc) //use this console log to see the object that is the generated result
     }
 }
-//builds generator and listens to generate button
-let generation = new Generator()
-generation.btnNPCListener()
+//builds generator and listens to generate button on npc
+let generationNPC = new Generator()
+generationNPC.btnNPCListener()
+
+
+
+// *******************************PLANET*************************************************************
+
+class DataPlanet {
+    climateArr = ["temperate", "tropical", "sub tropical", "arid", "semiarid", "frozen", "Molten"]
+    hospitipalArr = ['yes', 'no', 'to a race that is not human']
+    conceptPlanetArr = ['cityscape', 'low-tech', 'high-tech', 'Agri planet', 'Mining', 'Wilderness']
+    troublePlanetArr = ['power struggle', 'weak governance', 'poverty', 'crime', 'war', 'occupation', 'hidden agenda']
+    constanentStr = 'bcdfghjklmnpqrstvwxyz'
+    vowelStr ='aeiou'
+
+    randomArrValue(arr){
+        let randomIndex = Math.floor(Math.random() * (arr.length))
+        return arr[randomIndex]
+    }
+
+        //name generator
+        namePlanet(){
+            let name = ''
+            let count = Math.floor(2 + Math.random() * 3)
+            for(let i = 0; i < count; i++){
+                name = name + this.randomArrValue(this.constanentStr) + this.randomArrValue(this.vowelStr)
+            }
+            return name
+        }
+}
+
+class Planet extends DataPlanet {
+    
+    constructor(){
+        super()
+        this._name = super.namePlanet()
+        // this._species = this.speciesArr
+        // this._age = super.age()
+        // this._gender = super.randomArrValue(this.genderArr)
+        // this._concept = super.randomArrValue(this.conceptArr)
+        // this._trouble = super.randomArrValue(this.troubleArr)
+        // this._skills = super.skillList(28)
+    }
+
+    get name() {
+        return this._name
+    }
+    // get species() {
+    //     return this._species
+    // }
+    // get age() {
+    //     return this._age
+    // }
+    // get gender() {
+    //     return this._gender
+    // }
+    // get concept() {
+    //     return this._concept
+    // }
+    // get trouble() {
+    //     return this._trouble
+    // }
+    // get skills() {
+    //     return this._skills
+    // }
+}
+
+class PlanetGenerator {
+    constructor(){
+        this._btnPlanet = document.getElementById('btnPlanet')
+        this._namePlanet = document.getElementById('namePlanet')
+        // this._speciesNPC = document.getElementById('speciesNPC')
+        // this._ageNPC = document.getElementById('ageNPC')
+        // this._genderNPC = document.getElementById('genderNPC')
+        // this._conceptNPC = document.getElementById('conceptNPC')
+        // this._troubleNPC = document.getElementById('troubleNPC')
+        // this._skillsNPC = document.getElementById('skillsNPC')
+    }
+
+    get btnPlanet(){
+        return this._btnPlanet
+    }
+
+    get namePlanet(){
+        return this._namePlanet
+    }
+    // get speciesNPC(){
+    //     return this._speciesNPC
+    // }
+    // get ageNPC(){
+    //     return this._ageNPC
+    // }
+    // get genderNPC(){
+    //     return this.genderNPC
+    // }
+    // get conceptNPC(){
+    //     return this._conceptNPC
+    // }
+    // get troubleNPC(){
+    //     return this._troubleNPC
+    // }
+    // get skillsNPC(){
+    //     return this._skillsNPC
+    // }
+
+    btnPlanetListener(){
+        this.btnPlanet.addEventListener('click', this.populateCardPlanet)  
+    }
+
+    populateCardPlanet(){
+        const planet = new Planet()
+        namePlanet.innerHTML = `Name: ${planet.name}`
+        // speciesNPC.innerHTML = `Species: ${npc.species}`
+        // ageNPC.innerHTML = `Age: ${npc.age}`
+        // genderNPC.innerHTML = `Gender: ${npc.gender}`
+        // conceptNPC.innerHTML = `Concept: ${npc.concept}`
+        // troubleNPC.innerHTML = `Trouble: ${npc.trouble}`
+        // skillsNPC.innerHTML = `Skills: ${npc.skills}`
+        // console.log(npc) //use this console log to see the object that is the generated result
+    }
+}
+
+//builds generator and listens to generate button on npc
+let generationPlanet = new PlanetGenerator()
+generationPlanet.btnPlanetListener()
