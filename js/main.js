@@ -275,32 +275,32 @@ class Planet extends DataPlanet {
     constructor(){
         super()
         this._name = super.namePlanet()
-        // this._species = this.speciesArr
+        this._climate = super.randomArrValue(this.climateArr)
         // this._age = super.age()
-        // this._gender = super.randomArrValue(this.genderArr)
-        // this._concept = super.randomArrValue(this.conceptArr)
-        // this._trouble = super.randomArrValue(this.troubleArr)
+        this._hospitipal = super.randomArrValue(this.hospitipalArr)
+        this._concept = super.randomArrValue(this.conceptPlanetArr)
+        this._trouble = super.randomArrValue(this.troublePlanetArr)
         // this._skills = super.skillList(28)
     }
 
     get name() {
         return this._name
     }
-    // get species() {
-    //     return this._species
-    // }
-    // get age() {
-    //     return this._age
-    // }
+    get climate() {
+        return this._climate
+    }
+    get hospitipal() {
+        return this._hospitipal
+    }
     // get gender() {
     //     return this._gender
     // }
-    // get concept() {
-    //     return this._concept
-    // }
-    // get trouble() {
-    //     return this._trouble
-    // }
+    get concept() {
+        return this._concept
+    }
+    get trouble() {
+       return this._trouble
+    }
     // get skills() {
     //     return this._skills
     // }
@@ -310,11 +310,11 @@ class PlanetGenerator {
     constructor(){
         this._btnPlanet = document.getElementById('btnPlanet')
         this._namePlanet = document.getElementById('namePlanet')
-        // this._speciesNPC = document.getElementById('speciesNPC')
-        // this._ageNPC = document.getElementById('ageNPC')
+        this._climatePlanet = document.getElementById('climatePlanet')
+        this._hospitipalPlanet = document.getElementById('hospitipalPlanet')
         // this._genderNPC = document.getElementById('genderNPC')
-        // this._conceptNPC = document.getElementById('conceptNPC')
-        // this._troubleNPC = document.getElementById('troubleNPC')
+        this._conceptPlanet = document.getElementById('conceptPlanet')
+        this._troublePlanet = document.getElementById('troublePlanet')
         // this._skillsNPC = document.getElementById('skillsNPC')
     }
 
@@ -325,21 +325,21 @@ class PlanetGenerator {
     get namePlanet(){
         return this._namePlanet
     }
-    // get speciesNPC(){
-    //     return this._speciesNPC
-    // }
-    // get ageNPC(){
-    //     return this._ageNPC
-    // }
+    get climatePlanet(){
+        return this._climatePlanet
+    }
+    get hospitipalPlanet(){
+        return this._hospitipalPlanet
+    }
     // get genderNPC(){
     //     return this.genderNPC
     // }
-    // get conceptNPC(){
-    //     return this._conceptNPC
-    // }
-    // get troubleNPC(){
-    //     return this._troubleNPC
-    // }
+    get conceptPlanet(){
+        return this._conceptPlanet
+    }
+    get troublePlanet(){
+        return this._troublePlanet
+    }
     // get skillsNPC(){
     //     return this._skillsNPC
     // }
@@ -351,11 +351,11 @@ class PlanetGenerator {
     populateCardPlanet(){
         const planet = new Planet()
         namePlanet.innerHTML = `Name: ${planet.name}`
-        // speciesNPC.innerHTML = `Species: ${npc.species}`
-        // ageNPC.innerHTML = `Age: ${npc.age}`
+        climatePlanet.innerHTML = `Climate: ${planet.climate}`
+        hospitipalPlanet.innerHTML = `Hospitipal: ${planet.hospitipal}`
         // genderNPC.innerHTML = `Gender: ${npc.gender}`
-        // conceptNPC.innerHTML = `Concept: ${npc.concept}`
-        // troubleNPC.innerHTML = `Trouble: ${npc.trouble}`
+        conceptPlanet.innerHTML = `Concept: ${planet.concept}`
+        troublePlanet.innerHTML = `Trouble: ${planet.trouble}`
         // skillsNPC.innerHTML = `Skills: ${npc.skills}`
         // console.log(npc) //use this console log to see the object that is the generated result
     }

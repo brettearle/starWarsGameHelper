@@ -9,7 +9,7 @@
      --whiteReplace: #f0f4faff;
      --lightGray: #8f91a2ff;
      --accent: #00FFFF;
-     --darkGray: #343f3eff;
+     --darkGray: #101010;
      font-family: 'Space Mono', monospace;
 }
 
@@ -47,7 +47,7 @@ a:hover {
 }
 
 nav {
-     background-color: var(--blueBlack);
+     background-color: var(--darkGray);
      border-bottom: 1px solid var(--accent);
 }
 
@@ -56,9 +56,12 @@ nav {
      border: 2px solid var(--accent);
      margin: 10px;
      border-radius: 3rem;
+     max-width: 33%;
+     min-width: 310px;
 }
 .cardBox img{
-     width: 300px;
+     max-width: 300px;
+     width: 90%;
      height: 300px;
      object-fit: cover;
      object-position: 0 20%;
