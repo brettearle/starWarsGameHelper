@@ -51,6 +51,14 @@ nav {
      border-bottom: 1px solid var(--accent);
 }
 
+footer {
+     background-color: var(--darkGray);
+     border-top: 1px solid var(--accent);
+}
+
+footer p {
+     padding: 0 20px;
+}
 /* card styles */
 .cardBox {
      border: 2px solid var(--accent);
@@ -103,6 +111,13 @@ nav {
      justify-content: flex-end;
      padding: 10px 0;
 }
+
+.footerBox {
+     display: flex;
+     justify-content: flex-end;
+     padding: 10px 0;
+}
+
 .cardBoxWrapper {
      display: flex;
      justify-content: space-evenly;

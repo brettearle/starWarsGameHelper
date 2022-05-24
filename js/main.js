@@ -361,6 +361,6 @@ class PlanetGenerator {
     }
 }
 
-//builds generator and listens to generate button on npc
+//builds generator and listens to generate button on planet
 let generationPlanet = new PlanetGenerator()
 generationPlanet.btnPlanetListener()
