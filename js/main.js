@@ -99,7 +99,7 @@ class DataNPC extends FetchDataNPC{
     }
     genderArr = ['male', 'female', 'unknown']
     skillsArr = ['Athletics','Blast','Deception','Empathy','Fighting','Investigation','Lore','Mechanics','Notice','Persuasion','Resources','Transport','Vigor','Will']
-    troubleArr = ['Hunted', 'Broke', 'Diseased', 'Lost', 'Haunted', 'Crippled', 'Shamed', 'Outcasted', 'Under Supplied', 'Shamed' ]
+    troubleArr = ['Hunted', 'Broke', 'Diseased', 'Lost', 'Haunted', 'Crippled', 'Shamed', 'Outcast', 'Under Supplied' ]
     conceptArr = ['Politician', 'Mercenary', 'Soldier', 'Criminal', 'Mechanic', 'Pilot', 'Smuggler', 'Labourer', 'Trader', 'Fixer', 'Gambler', 'Force Adept']
     constanentStr = 'bcdfghjklmnpqrstvwxyz'
     vowelStr ='aeiou'
@@ -248,7 +248,7 @@ generationNPC.btnNPCListener()
 
 class DataPlanet {
     climateArr = ["temperate", "tropical", "sub tropical", "arid", "semiarid", "frozen", "Molten"]
-    hospitipalArr = ['yes', 'no', 'to a race that is not human']
+    hospitableArr = ['yes', 'no', 'to a race that is not human']
     conceptPlanetArr = ['cityscape', 'low-tech', 'high-tech', 'Agri planet', 'Mining', 'Wilderness']
     troublePlanetArr = ['power struggle', 'weak governance', 'poverty', 'crime', 'war', 'occupation', 'hidden agenda']
     constanentStr = 'bcdfghjklmnpqrstvwxyz'
@@ -277,7 +277,7 @@ class Planet extends DataPlanet {
         this._name = super.namePlanet()
         this._climate = super.randomArrValue(this.climateArr)
         // this._age = super.age()
-        this._hospitipal = super.randomArrValue(this.hospitipalArr)
+        this._hospitable = super.randomArrValue(this.hospitableArr)
         this._concept = super.randomArrValue(this.conceptPlanetArr)
         this._trouble = super.randomArrValue(this.troublePlanetArr)
         // this._skills = super.skillList(28)
@@ -289,8 +289,8 @@ class Planet extends DataPlanet {
     get climate() {
         return this._climate
     }
-    get hospitipal() {
-        return this._hospitipal
+    get hospitable() {
+        return this._hospitable
     }
     // get gender() {
     //     return this._gender
@@ -311,7 +311,7 @@ class PlanetGenerator {
         this._btnPlanet = document.getElementById('btnPlanet')
         this._namePlanet = document.getElementById('namePlanet')
         this._climatePlanet = document.getElementById('climatePlanet')
-        this._hospitipalPlanet = document.getElementById('hospitipalPlanet')
+        this._hospitablePlanet = document.getElementById('hospitablePlanet')
         // this._genderNPC = document.getElementById('genderNPC')
         this._conceptPlanet = document.getElementById('conceptPlanet')
         this._troublePlanet = document.getElementById('troublePlanet')
@@ -328,8 +328,8 @@ class PlanetGenerator {
     get climatePlanet(){
         return this._climatePlanet
     }
-    get hospitipalPlanet(){
-        return this._hospitipalPlanet
+    get hospitablePlanet(){
+        return this._hospitablePlanet
     }
     // get genderNPC(){
     //     return this.genderNPC
@@ -352,7 +352,7 @@ class PlanetGenerator {
         const planet = new Planet()
         namePlanet.innerHTML = `Name: ${planet.name}`
         climatePlanet.innerHTML = `Climate: ${planet.climate}`
-        hospitipalPlanet.innerHTML = `Hospitipal: ${planet.hospitipal}`
+        hospitablePlanet.innerHTML = `Hospitable: ${planet.hospitable}`
         // genderNPC.innerHTML = `Gender: ${npc.gender}`
         conceptPlanet.innerHTML = `Concept: ${planet.concept}`
         troublePlanet.innerHTML = `Trouble: ${planet.trouble}`
